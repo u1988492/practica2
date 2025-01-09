@@ -46,6 +46,8 @@
 		<Unit filename="Solucionador.h" />
 		<Unit filename="SolucionadorBacktracking.cpp" />
 		<Unit filename="SolucionadorBacktracking.h" />
+		<Unit filename="eines.cpp" />
+		<Unit filename="eines.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

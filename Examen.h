@@ -2,6 +2,7 @@
 #define EXAMEN_H
 
 // contiene la información relevante a cada examen
+// "Candidatos
 
 class Examen
 {
