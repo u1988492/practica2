@@ -5,8 +5,13 @@
 #include <iomanip>
 #include <fstream>
 #include <stdexcept>
+#include <set>
 #include "Examen.h"
 #include "Horario.h"
+#include "Solucionador.h"
+#include "AlgoritmoVoraz.h"
+#include "SolucionadorBacktracking.h"
+#include "BacktrackingMejorOpcion.h"
 #include "eines.h"
 
 using namespace std;
@@ -15,7 +20,7 @@ using namespace std;
 
 // Función para comprobar que los datos leídos son válidoss
 bool validarDatos(const string& grado, const string& codi, int semestre, int curso){
-    return !grado.empty() && !codi.empty() && (semestre == 1 || semestre == 2) && curso > 0);
+    return !grado.empty() && !codi.empty() && (semestre == 1 || semestre == 2) && curso > 0;
 }
 
 // FUNCION PARA LEER LOS DATOS DEL ARCHIVO DE ENTRADA
@@ -24,18 +29,18 @@ bool validarDatos(const string& grado, const string& codi, int semestre, int cur
 void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Horario& horario){
     ifstream fin(fichero);
     if(!fin.is_open()){
-        throw runtime_error("Error: El fichero [" << fichero << "] no se pudo abrir. Repasa el nombre y los permisos.");
+        throw runtime_error("Error: El fichero [" + fichero + "] no se pudo abrir. Repasa el nombre y los permisos.");
     }
 
     string linea;
     vector<string> campos;
     bool restricciones = false;
-    int nAsig = 0;
-    int nGrados = 0;
 
     getline(fin, linea); // saltar cabecera
     while(getline(fin, linea)){
-        if(linea == '*'){
+        if(linea.empty()) continue;
+
+        if(linea[0] == '*'){
             restricciones = true;
             continue;
         }
@@ -46,21 +51,23 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
             // leer datos de asignaturas
             if(campos.size()>=8){ // solo procesar lineas que tengan los campos necesarios
                 // procesar los campos de interes
-                string grado = tokens[0];
+                string grado = campos[0];
                 string codi = campos[2];
                 int semestre = stoi(campos[5]);
                 int curso = stoi(campos[6]);
-                bool granCapacidad = (campos[3]=='g');
+                bool granCapacidad = (campos[3]== "g");
 
                 if(validarDatos(grado, codi, semestre, curso)){
                     // si los datos son válidos, guardar a estructura de datos de examenes que organizar
                     // actualizar contadores de datos
+                    examenes.emplace_back(grado, codi, semestre, curso, granCapacidad);
                 }
             }
         }
         else{
             if(campos.size()==2){
-            // leer restricciones
+                // leer restricciones
+                horario.agregarRestriccion(campos[0], campos[1]);
             }
         }
     }
@@ -68,7 +75,7 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
 }
 
 // Función para procesar los argumentos de entrada de la linea de comando
-void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aularR, int&aulasG, int& maxDias, int& semestre, string& fichero){
+void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aulasR, int&aulasG, int& maxDias, int& semestre, string& fichero){
 
     if(argn>0){
         //procurar no acceder a valores indefinidos
@@ -91,32 +98,32 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aularR, i
             }
             else if(arg == "-v"){
                 algoritmo = "voraz";
-                cout "Usando algoritmo voraz" << endl;
+                cout << "Usando algoritmo voraz" << endl;
             }
             else if(arg == "-m"){
                 algoritmo = "mejorOpcion";
                 cout << "Usando algoritmo mejor opcion" << endl;
             }
-            else if(arg =="-cr" && i+1<argc){
+            else if(arg =="-cr" && i+1<argn){
                 aulasR = stoi(argv[i+1]); //leer numero de aulas de capacidad reducida
             }
-            else if(arg =="-gc" && i+1<argc){
+            else if(arg =="-gc" && i+1<argn){
                 aulasG = stoi(argv[i+1]); // leer numero de aulas de gran capacidad
             }
-            else if(arg == "-s" && i+1<argc){
+            else if(arg == "-s" && i+1<argn){
                 semestre = stoi(argv[i+1]); // leer semestre
                 if(semestre!=1 || semestre!=2){
                     throw invalid_argument("Error: el valor asociado a la opción '-s' es incorrecto.");
                 }
             }
-            else if(arg == "-d" && i+1<argc){
-                maxDias = stoi(argc[i+1]); // ler maximo de dias que se pueden ocupar
+            else if(arg == "-d" && i+1<argn){
+                maxDias = stoi(argv[i+1]); // ler maximo de dias que se pueden ocupar
             }
             else if(fichero.empty()){
                 fichero = arg; // se asume que si no hay ninguna opcion en la entrada, la entrada es el archivo de lectura
             }
             else{
-                throw invalid_argument("Error: Opción desconocida: " << arg);
+                throw invalid_argument("Error: Opción desconocida: " + arg);
             }
         }
         if(fichero.empty()){
@@ -131,7 +138,7 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aularR, i
 int main(int argn, char ** argv){
     try{
         vector<Examen> examenes;
-        Horario horario;
+        Horario horario(10, 3, 2); // inicializar por defecto: max dias, gc, cr ARREGLAR SEGUN ENUNCIADO
 
         string algoritmo = "backtracking"; // backtracking básico por defecto; cualquier solución válida
         int aulasR = 1;
@@ -143,8 +150,38 @@ int main(int argn, char ** argv){
         procesarArgumentos(argn, argv, algoritmo, aulasR, aulasG, maxDias, semestre, fichero);
         procesarArchivoEntrada(fichero, examenes, horario);
 
-        cout << "se han leido los datos" << endl; // cambiar luego para mostrar numero de asignaturas y grados
-        cout << "algoritmo seleccionado: " << algoritmo << endl;
+        //contar carreras diferentes en los examenes leidos
+        set<string> carreras;
+        for(const auto&examen: examenes){
+            carreras.insert(examen.obtCarrera());
+        }
+
+        cout << examenes.size() << " asignaturas leídas de " << carreras.size() << " grados diferentes." << endl;
+        cout << "algoritmo seleccionado: " << algoritmo << endl; // QUITAR ESTA LINEA
+
+        // organizar el horario con el algoritmo seleccionado
+        Solucionador* solucionador = nullptr;
+        if(algoritmo=="voraz"){
+            solucionador = new AlgoritmoVoraz(examenes, horario);
+        }
+        else if(algoritmo=="backtracking"){
+            solucionador = new SolucionadorBacktracking(examenes, horario);
+        }
+        else if(algoritmo=="mejorOpcion"){
+            solucionador = new BacktrackingMejorOpcion(examenes, horario);
+        }
+        else{
+            throw invalid_argument("Error: algoritmo desconocido.");
+        }
+
+        if(solucionador->solucionar()){
+            cout << "Horario calculado con éxito:" << endl;
+            horario.mostrarHorario();
+        }
+        else{ cout << "No se pudo calcular un horario válido" << endl; }
+
+        delete solucionador; // limpiar memoria
+
 
     } catch(const invalid_argument& e){
         cerr << e.what() << endl;

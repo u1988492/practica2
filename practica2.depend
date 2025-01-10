@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1736417910 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\eines.cpp
+	"eines.h"
+
+1736417893 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\eines.h
+	<string>
+	<vector>
+
+1736359995 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.cpp
+	"Examen.h"
+
+1736525318 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.h
+	<iostream>
+	<iomanip>
+
+1736528632 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.cpp
+	"AlgoritmoVoraz.h"
+	"Examen.h"
+	"Horario.h"
+
+1736361643 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.h
+	"Solucionador.h"
+
+1736528892 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionador.h
+	<vector>
+	"Examen.h"
+	"Horario.h"
+
+1736528536 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.h
+	<vector>
+	<string>
+	<cmath>
+	"Examen.h"
+
+1736528674 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\backtrackingmejoropcion.cpp
+	"BacktrackingMejorOpcion.h"
+	"Examen.h"
+	"Horario.h"
+
+1736361816 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\backtrackingmejoropcion.h
+	"SolucionadorBacktracking.h"
+
+1736526035 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.h
+	"Solucionador.h"
+
+1736528735 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.cpp
+	"Horario.h"
+
+1736526768 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionador.cpp
+	"Solucionador.h"
+
+1736528667 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.cpp
+	"SolucionadorBacktracking.h"
+	"Examen.h"
+	"Horario.h"
+
+1736528864 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+	<iomanip>
+	<fstream>
+	<stdexcept>
+	<set>
+	"Examen.h"
+	"Horario.h"
+	"Solucionador.h"
+	"AlgoritmoVoraz.h"
+	"SolucionadorBacktracking.h"
+	"BacktrackingMejorOpcion.h"
+	"eines.h"
+

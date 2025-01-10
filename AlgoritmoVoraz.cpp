@@ -4,7 +4,6 @@
 
 using namespace std;
 
-AlgoritmoVoraz::AlgoritmoVoraz()
-{
-    //ctor
+bool AlgoritmoVoraz::solucionar(){
+    return false;
 }

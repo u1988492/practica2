@@ -10,7 +10,7 @@ class SolucionadorBacktracking: public Solucionador
     public:
 
         SolucionadorBacktracking(const vector<Examen>&examenes, const Horario&horario)
-        : Solucionador(examen, horario) {}
+        : Solucionador(examenes, horario) {}
 
         // implementacion de la funcion de solucionar
         bool solucionar() override;

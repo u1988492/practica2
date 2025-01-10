@@ -4,7 +4,10 @@
 
 using namespace std;
 
-SolucionadorBacktracking::SolucionadorBacktracking()
-{
-    //ctor
+bool SolucionadorBacktracking::solucionar(){
+    return true;
+}
+
+bool SolucionadorBacktracking::backtracking(int indiceExamen){
+    return true;
 }

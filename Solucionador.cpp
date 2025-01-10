@@ -2,4 +2,4 @@
 
 using namespace std;
 
-const Horario Solucionador::obtHorario() const{ return horario; }
+const Horario& Solucionador::obtHorario() const{ return horario; }

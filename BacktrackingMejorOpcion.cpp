@@ -4,7 +4,6 @@
 
 using namespace std;
 
-BacktrackingMejorOpcion::BacktrackingMejorOpcion()
-{
-    //ctor
+bool BacktrackingMejorOpcion::solucionar(){
+    return true;
 }

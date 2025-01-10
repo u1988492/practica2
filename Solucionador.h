@@ -5,6 +5,7 @@
 #include "Examen.h"
 #include "Horario.h"
 
+using namespace std;
 
 // clase base para encapsular las funcionalidades y datos compartidos en los diferentes modos de resolucion del problema
 
@@ -22,11 +23,10 @@ class Solucionador
         const Horario& obtHorario() const;
 
     protected:
-        // horario sobre el que se trabaja
-        Horario horario;
         // lista de examenes que organizar
         vector<Examen> examenes;
-
+        // horario sobre el que se trabaja
+        Horario horario;
 };
 
 #endif // SOLUCIONADOR_H
