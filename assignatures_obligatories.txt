@@ -1,0 +1,85 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GEINF	Àlgebra	3105G07001	g	6.00	1	1
+GEINF	Càlcul	3105G07002	g	6.00	1	1
+GEINF	Lògica i matemàtica discreta	3105G07003	g	9.00	2	1
+GEINF	Metodologia i tecnologia de la programació I	3105G07004	g	9.00	1	1
+GEINF	Estructura i tecnologia de computadors I	3105G07005	g	9.00	1	1
+GEINF	Física i electrònica	3105G07006	g	9.00	2	1
+GEINF	Metodologia i tecnologia de la programació II	3105G07009	g	6.00	2	1
+GEINF	Estructura i tecnologia de computadors II	3105G07016	g	6.00	2	1
+GEINF	Estadística	3105G07007	r	6.00	1	2
+GEINF	Organització i administració d'empreses	3105G07008	g	6.00	2	2
+GEINF	Estructures de dades i algorítmica	3105G07010	g	9.00	1	2
+GEINF	Projecte de programació	3105G07011	r	5.00	2	2
+GEINF	Sistemes digitals	3105G07017	r	6.00	1	2
+GEINF	Computadors	3105G07018	r	9.00	2	2
+GEINF	Bases de dades	3105G07021	g	9.00	1	2
+GEINF	Enginyeria del software I	3105G07022	g	5.00	2	2
+GEINF	Sistemes operatius	3105G07025	g	5.00	2	2
+GEINF	Multimèdia i interfícies d'usuari	3105G07012	g	5.00	1	3
+GEINF	Fonaments de computació	3105G07013	r	5.00	1	3
+GEINF	Paradigmes i llenguatges de programació	3105G07014	r	5.00	2	3
+GEINF	Intel·ligència artificial	3105G07015	g	5.00	2	3
+GEINF	Arquitectura de computadors	3105G07019	r	5.00	1	3
+GEINF	Informàtica industrial i robòtica	3105G07020	r	5.00	2	3
+GEINF	Enginyeria del software II	3105G07023	g	5.00	1	3
+GEINF	Projecte de desenvolupament de software	3105G07024	r	5.00	2	3
+GEINF	Projecte de sistemes operatius	3105G07026	r	5.00	1	3
+GEINF	Xarxes	3105G07027	g	5.00	1	3
+GEINF	Projecte de xarxes	3105G07028	r	5.00	2	3
+GEINF	Legislació i ètica professional	3105G07029	g	5.00	2	3
+GEINF	Anàlisi i processament d'imatges	3105G07052	r	5.00	2	4
+GEINF	Informàtica gràfica	3105G07035	r	5.00	1	4
+GDDV	Elements matemàtics per a videojocs	3105G13001	r	9.00	1	1
+GDDV	Arquitectures de consoles i dispositius de videojocs	3105G13009	r	7.00	2	1
+GDDV	Formació d'imatges i interacció entre objectes	3105G13010	r	6.00	2	1
+GDDV	Cultura visual i mitjans de comunicació	3105G13028	r	5.00	2	1
+GDDV	Art i videojocs	3105G13031	r	3.00	1	1
+GDDV	Expressió gràfica i artística	3105G13032	r	6.00	2	1
+GDDV	Disseny i desenvolupament de jocs web	3105G13020	r	5.00	2	2
+GDDV	Programació de jocs 2D i 2.5D	3105G13021	r	5.00	2	2
+GDDV	Disseny conceptual dels videojocs	3105G13027	r	5.00	2	2
+GDDV	Narrativa dels videojocs	3105G13029	r	7.00	1	2
+GDDV	Disseny 2D i 3D	3105G13033	r	5.00	2	2
+GDDV	Disseny de motors de jocs I	3105G13022	r	5.00	1	3
+GDDV	Disseny de motors de jocs II	3105G13023	r	4.00	2	3
+GDDV	Cloud computing i sistemes distribuïts per a videojocs	3105G13026	r	5.00	2	3
+GDDV	Teoria i pràctica de la producció audiovisual	3105G13030	r	5.00	1	3
+GDDV	Disseny de personatges i animació	3105G13034	r	5.00	1	3
+GDDV	Tècniques d’interacció avançada	3105G13014	r	5.00	1	4
+GDDV	Programació de dispositius mòbils	3105G13024	r	5.00	1	4
+GDDV	Sistemes multijugador	3105G13025	r	4.00	1	4
+GEB	Fonaments de física 1	3105G00001	g	6.00	1	1
+GEB	Fonaments de física 2	3105G00002	g	6.00	2	1
+GEB	Fonaments de matemàtiques 2	3105G00003	g	6.00	2	1
+GEB	Fonaments de matemàtiques 1	3105G00004	g	9.00	1	1
+GEB	Fonaments de ciència de materials	3105G00013	g	6.00	2	1
+GEB	Anatomofisiologia 1	3105G15001	r	6.00	1	1
+GEB	Introducció a l'enginyeria biomèdica	3105G15003	r	3.00	2	1
+GEB	Anatomofisiologia 2	3105G15004	r	3.00	2	1
+GEB	Estadística	3105G00015	g	6.00	1	2
+GEB	Teoria de circuits	3105G03012	g	6.00	1	2
+GEB	Fonaments d'electrònica	3105G03013	g	6.00	1	2
+GEB	Electrònica analògica	3105G03022	g	6.00	2	2
+GEB	Anatomia funcional i biomecànica	3109G01057	r	5.00	2	2
+GEB	Imatges i senyals biomèdiques	3105G15005	r	6.00	2	2
+GEB	Mecànica i biomaterials	3105G15006	r	6.00	2	2
+GEB	Instrumentació electrònica	3105G03023	g	5.00	1	3
+GEB	Sistemes robotitzats	3105G03028	g	4.00	2	3
+GEB	Desenvolupament de projectes d'electrònica	3105G03032	g	4.00	2	3
+GEB	Disseny de dispositius d'assistència i teràpia	3105G15007	r	5.00	1	3
+GEB	Equips de monitorització i diagnòstic	3105G15008	r	6.00	1	3
+GEB	Gestió intel·ligent de dades i coneixement mèdic	3105G15009	r	5.00	1	3
+GEB	Anàlisi d'imatge mèdica per al diagnòstic	3105G15010	r	6.00	2	3
+GEB	Modelització i control de sistemes biomèdics	3105G15011	r	5.00	2	3
+GEB	Organització i gestió d'empreses	3105G00008	g	6.00	2	3
+GEB	Sistemes d'informació en àmbit sanitari	3105G15012	r	4.00	1	4
+GEB	Intervenció assistida i computaritzada	3105G15013	r	5.00	1	4
+GEB	Regulació ético-legal en l'enginyeria biomèdica	3105G15014	r	5.00	1	4
+*
+3105G07001	3105G13001
+3105G07002	3105G13001
+3105G07001	3105G13031
+3105G07002	3105G13031
+3105G07003	3105G13009
+3105G07009	3105G13009

@@ -6,10 +6,10 @@
 	<string>
 	<vector>
 
-1736359995 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.cpp
+1736533398 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.cpp
 	"Examen.h"
 
-1736525318 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.h
+1736533729 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.h
 	<iostream>
 	<iomanip>
 
@@ -26,10 +26,11 @@
 	"Examen.h"
 	"Horario.h"
 
-1736528536 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.h
+1736533672 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.h
 	<vector>
 	<string>
 	<cmath>
+	<algorithm>
 	"Examen.h"
 
 1736528674 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\backtrackingmejoropcion.cpp
@@ -54,7 +55,7 @@
 	"Examen.h"
 	"Horario.h"
 
-1736528864 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
+1736533232 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
 	<iostream>
 	<vector>
 	<string>

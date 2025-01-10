@@ -60,7 +60,8 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
                 if(validarDatos(grado, codi, semestre, curso)){
                     // si los datos son válidos, guardar a estructura de datos de examenes que organizar
                     // actualizar contadores de datos
-                    examenes.emplace_back(grado, codi, semestre, curso, granCapacidad);
+                    Examen e(codi, grado, curso, semestre, granCapacidad);
+                    examenes.emplace_back(e);
                 }
             }
         }
@@ -137,15 +138,15 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aulasR, i
 
 int main(int argn, char ** argv){
     try{
-        vector<Examen> examenes;
-        Horario horario(10, 3, 2); // inicializar por defecto: max dias, gc, cr ARREGLAR SEGUN ENUNCIADO
-
         string algoritmo = "backtracking"; // backtracking básico por defecto; cualquier solución válida
         int aulasR = 1;
         int aulasG = 1;
-        int maxDias; // indefinido
+        int maxDias = -1; // maxDias indefinidos
         int semestre = 1;
         string fichero;
+
+        vector<Examen> examenes;
+        Horario horario(maxDias, aulasG, aulasR); // inicializar por defecto: max dias, gc, cr ARREGLAR SEGUN ENUNCIADO
 
         procesarArgumentos(argn, argv, algoritmo, aulasR, aulasG, maxDias, semestre, fichero);
         procesarArchivoEntrada(fichero, examenes, horario);

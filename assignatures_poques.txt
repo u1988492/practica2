@@ -1,0 +1,42 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GDDV	Elements matemàtics per a videojocs	3105G13001	r	9.00	1	1
+GDDV	Arquitectures de consoles i dispositius de videojocs	3105G13009	r	7.00	2	1
+GDDV	Formació d'imatges i interacció entre objectes	3105G13010	r	6.00	2	1
+GDDV	Art i videojocs	3105G13031	r	3.00	1	1
+GDDV	Disseny conceptual dels videojocs	3105G13027	r	5.00	2	2
+GDDV	Narrativa dels videojocs	3105G13029	r	7.00	1	2
+GDDV	Disseny de motors de jocs I	3105G13022	r	5.00	1	3
+GDDV	Disseny de motors de jocs II	3105G13023	r	4.00	2	3
+GDDV	Cloud computing i sistemes distribuïts per a videojocs	3105G13026	r	5.00	2	3
+GDDV	Teoria i pràctica de la producció audiovisual	3105G13030	r	5.00	1	3
+GEINF	Àlgebra	3105G07001	g	6.00	1	1
+GEINF	Càlcul	3105G07002	g	6.00	1	1
+GEINF	Lògica i matemàtica discreta	3105G07003	g	9.00	2	1
+GEINF	Metodologia i tecnologia de la programació II	3105G07009	g	6.00	2	1
+GEINF	Estadística	3105G07007	r	6.00	1	2
+GEINF	Organització i administració d'empreses	3105G07008	g	6.00	2	2
+GEINF	Estructures de dades i algorítmica	3105G07010	g	9.00	1	2
+GEINF	Projecte de programació	3105G07011	r	5.00	2	2
+GEINF	Multimèdia i interfícies d'usuari	3105G07012	g	5.00	1	3
+GEINF	Fonaments de computació	3105G07013	r	5.00	1	3
+GEINF	Paradigmes i llenguatges de programació	3105G07014	r	5.00	2	3
+GEINF	Intel·ligència artificial	3105G07015	g	5.00	2	3
+GEB	Fonaments de física 1	3105G00001	g	6.00	1	1
+GEB	Fonaments de física 2	3105G00002	g	6.00	2	1
+GEB	Fonaments de matemàtiques 2	3105G00003	g	6.00	2	1
+GEB	Fonaments de matemàtiques 1	3105G00004	g	9.00	1	1
+GEB	Estadística	3105G00015	g	6.00	1	2
+GEB	Teoria de circuits	3105G03012	g	6.00	1	2
+GEB	Electrònica analògica	3105G03022	g	6.00	2	2
+GEB	Anatomia funcional i biomecànica	3109G01057	r	5.00	2	2
+GEB	Desenvolupament de projectes d'electrònica	3105G03032	g	4.00	2	3
+GEB	Disseny de dispositius d'assistència i teràpia	3105G15007	r	5.00	1	3
+GEB	Equips de monitorització i diagnòstic	3105G15008	r	6.00	1	3
+GEB	Gestió intel·ligent de dades i coneixement mèdic	3105G15009	r	5.00	1	3
+*
+3105G07001	3105G13001
+3105G07002	3105G13001
+3105G07001	3105G13031
+3105G07002	3105G13031
+3105G07003	3105G13009
+3105G07009	3105G13009

@@ -12,8 +12,12 @@ class Examen
 {
     public:
         // constructor de la clase
-        Examen(const string& codigo, const string& carrera, int curso, int semestre, bool grupoGrande)
-        : codigo(codigo), carrera(carrera), curso(curso), semestre(semestre), grupoGrande(grupoGrande){}
+        Examen(const string& codigo, const string& grado, int curso, int semestre, bool granCapacidad)
+        : codigo(codigo), grado(grado), curso(curso), semestre(semestre), granCapacidad(granCapacidad){}
+
+        bool operator==(const Examen& e) const{
+            return codigo == e.codigo;
+        }
         // funcion para obtener el codigo de la asignatura
         string obtCodigo() const;
         // funcion para obtener el nombre de la carrera
@@ -27,10 +31,10 @@ class Examen
 
     private:
         string codigo;
-        string carrera;
+        string grado;
         int curso;
         int semestre;
-        bool grupoGrande;
+        bool granCapacidad;
 };
 
 #endif // EXAMEN_H

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <algorithm>
 #include "Examen.h"
 
 using namespace std;
@@ -14,8 +15,7 @@ class Horario
 {
     public:
         // constructor de horario con dias maximos que ocupar, numero de aulas grandes, y numero de aulas pequeñas
-        Horario(int maxDias, int aulasG, int aulasR)
-        : maxDias(maxDias), aulasG(aulasG), aulasR(aulasR){}
+        Horario(int maxDias, int aulasG, int aulasR);
         // funcion para obtener el numero maximo de dias que ocupar
         int obtMaxDias();
         //funcion para obtener el numero de aulas grandes disponibles
@@ -25,16 +25,16 @@ class Horario
         // funcion para obtener los horarios de examenes
         const vector<vector<vector<Examen>>>& obtHorarios() const;
 
-        // funcion para comprobar si se puede agregar un examen al horario
+        // funcion para comprobar si se puede agregar un examen al horario respetando las restricciones de horarios
         bool sePuedeAgregar(int dia, int turno, const Examen& examen) const;
+        // añadir dias al horario dinámicamente
+        void agregarDia();
         // funcion para agregar un examen al horario
         void agregarExamen(int dia, int turno, const Examen& examen);
         // funcion para quitar un examen del horario
         void quitarExamen(int dia, int turno, const Examen& examen);
         // funcion para mostrar horario
         void mostrarHorario() const;
-        // verificar si un examen se puede añadir al turno sin violar restricciones
-        bool verificarRestricciones(const Examen& eNuevo, const vector<Examen>& turno) const;
         // calcular la desviación estándar del horario
         double calcularDesviacion() const;
         // función para agregar restricciones entre examenes
@@ -42,7 +42,7 @@ class Horario
 
 
     private:
-        // horario de examenes organizado por día y turno
+        // horario de examenes organizado por día y turno; dias -> turnos -> examenes
         vector<vector<vector<Examen>>> turnos;
         //restricciones
         vector<pair<string, string>> restricciones;
@@ -52,8 +52,6 @@ class Horario
         int aulasG;
         // cantidad de aulas de capacidad reducida
         int aulasR;
-
-        //desviacion estandar
 
 };
 
