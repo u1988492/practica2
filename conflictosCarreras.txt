@@ -1,0 +1,9 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GEINF	Àlgebra	3105G07001	g	6.00	1	1
+GEINF	Càlcul	3105G07002	g	6.00	1	1
+GDDV	Elements matemàtics per a videojocs	3105G13001	r	9.00	1	1
+GDDV	Art i videojocs	3105G13031	r	3.00	1	1
+*
+3105G07001	3105G13001
+3105G07002	3105G13001
+3105G07001	3105G13031

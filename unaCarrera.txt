@@ -1,0 +1,8 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GEINF	Àlgebra	3105G07001	g	6.00	1	1
+GEINF	Càlcul	3105G07002	g	6.00	1	1
+GEINF	Metodologia i tecnologia de la programació I	3105G07004	g	9.00	1	1
+GEINF	Estructura i tecnologia de computadors I	3105G07005	g	9.00	1	1
+GEINF	Estadística	3105G07007	r	6.00	1	2
+*
+3105G07001	3105G07002

@@ -1,0 +1,10 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GEB	Fonaments de física 1	3105G00001	g	6.00	1	1
+GEB	Fonaments de física 2	3105G00002	g	6.00	2	1
+GEB	Estadística	3105G00015	g	6.00	1	2
+GEB	Teoria de circuits	3105G03012	g	6.00	1	2
+GEINF	Lògica i matemàtica discreta	3105G07003	g	9.00	2	1
+GEINF	Metodologia i tecnologia de la programació II	3105G07009	g	6.00	2	1
+*
+3105G00001	3105G00002
+3105G07003	3105G07009
