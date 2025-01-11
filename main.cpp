@@ -18,6 +18,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <set>
+#include <chrono>
 #include "Examen.h"
 #include "Horario.h"
 #include "Solucionador.h"
@@ -26,7 +27,7 @@
 #include "BacktrackingMejorOpcion.h"
 #include "eines.h"
 
-using namespace std;
+using namespace std::chrono;
 
 // FUNCIONES DE INTERACCION CON EL USUARIO
 

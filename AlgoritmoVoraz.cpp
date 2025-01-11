@@ -2,6 +2,7 @@
 #include "Examen.h"
 #include "Horario.h"
 
+
 using namespace std;
 
 AlgoritmoVoraz::AlgoritmoVoraz(const vector<Examen>&examenes, Horario& horario) : Solucionador(examenes, horario){
@@ -10,7 +11,6 @@ AlgoritmoVoraz::AlgoritmoVoraz(const vector<Examen>&examenes, Horario& horario) 
 
 void AlgoritmoVoraz::ordenarExamenes(){
     // ordenar examenes para facilitar el cálculo del horario
-    cout << "ordenando examenes" << endl;
     sort(examenes.begin(), examenes.end(), [](const Examen&a, const Examen&b){
         if(a.esGrupoGrande() != b.esGrupoGrande()){
                 return a.esGrupoGrande() > b.esGrupoGrande(); // priorizar examenes de aulas grandes
@@ -25,28 +25,25 @@ void AlgoritmoVoraz::ordenarExamenes(){
 bool AlgoritmoVoraz::solucionar(){
     // guardar el último día guardado para cada carrera y curso
     map<pair<string, int>, int> ultimoDia;
-    cout << "solucionando" << endl;
     // para cada examen de los candidatos, intentar colocar en el horario
     for(const auto& examen : examenes){
-        cout << "examen: " << examen.obtCodigo() << endl;
         bool asignado = false;
-        int mejorDia = -1, mejorTurno = -1, maxDistancia = -1;
-        // añadir examenes hasta llegar al maximo de días disponibles; si no hay límite, seguir iterando hasta colocar todos los exámenes
-        for(int dia=0; horario.obtMaxDias() == -1 || dia < horario.obtMaxDias(); dia++){
+        int dia = 0;
+
+        while(horario.obtMaxDias() == -1 || dia < horario.obtMaxDias()){
+            // añadir nuevo día si es necesario y no hay restricciones
             if(dia >= horario.obtHorarios().size()){
-                if(horario.obtMaxDias()==-1){
-                    // límite de seguridad para evitar consumir demsiada memoria
-                    if(dia>1000){
-                        throw runtime_error("Error: se alcanzó el límite de días del horario.");
-                    }
-                    horario.agregarDia(); // añadir días dinámicamente si no hay límite
+                if(horario.obtMaxDias() == -1){
+                    horario.agregarDia();
                 }
-                else{ break; } // salir del bucle si se ha alcanzado el máximo
+                else{
+                    break;
+                }
             }
 
-            // para cada turno del día
-            for(int turno=0; turno < 2; turno++){
-                if(!horario.sePuedeAgregar(dia, turno, examen)) continue;
+            // comprobar ambos turnos del día
+            for(int turno=0; turno < 2; ++turno){
+                if(!horario.sePuedeAgregar(dia, turno, examen)) continue; // siguiente turno si no se cumplen restricciones
 
                 // comprobar restricciones de aulas
                 int aulasRUsadas = 0, aulasGUsadas = 0;
@@ -55,26 +52,17 @@ bool AlgoritmoVoraz::solucionar(){
                     else aulasRUsadas++;
                 }
 
-                if(examen.esGrupoGrande() && aulasGUsadas >= horario.obtAulasG()) continue; // salir si es examen de gran capacidad no hay aulas grandes disponibles
-                if(!examen.esGrupoGrande() && aulasRUsadas >= horario.obtAulasR()) continue; // salir si es examen de capacidad reducida y no hay aulas pequeñas disponibles
+                if(examen.esGrupoGrande() && aulasGUsadas >= horario.obtAulasG()) continue; // siguiente turno si es examen de gran capacidad no hay aulas grandes disponibles
+                if(!examen.esGrupoGrande() && aulasRUsadas >= horario.obtAulasR()) continue; // siguiente turno si es examen de capacidad reducida y no hay aulas pequeñas disponibles
 
-                // calcular distancia entre el último examen colocado de la misma carrera y curso que el que se quiere colocar
-                auto it = ultimoDia.find({examen.obtCarrera(), examen.obtCurso()});
-                int distancia = (it != ultimoDia.end()) ? dia - it->second : dia + 1; // distancia es dia + 1 para el primer examen de la carrera y curso
-                // actualizar la mejor posición
-                if(distancia > maxDistancia){
-                    maxDistancia = distancia;
-                    mejorDia = dia;
-                    mejorTurno = turno;
-                }
-
+                // si se puede, colocar el examen en el horario
+                horario.agregarExamen(dia, turno, examen);
+                ultimoDia[{examen.obtCarrera(), examen.obtCurso()}] = dia;
+                asignado = true;
+                break; // dejar de probar turnos
             }
-        }
-        // colocar examen en la mejor posición disponible
-        if(mejorDia != -1 && mejorTurno != -1){
-            horario.agregarExamen(mejorDia, mejorTurno, examen);
-            ultimoDia[{examen.obtCarrera(), examen.obtCurso()}] = mejorDia;
-            asignado = true;
+            if(asignado) break; // dejar de probar días si se ha colocado el examen
+            ++dia;
         }
 
         // si no se ha podido colocar un examen, no hay solución

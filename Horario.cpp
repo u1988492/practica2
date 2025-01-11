@@ -21,7 +21,6 @@ const vector<vector<vector<Examen>>>& Horario::obtHorarios() const{ return turno
 void Horario::agregarDia(){
     if(maxDias == -1 || turnos.size() < maxDias){
         turnos.emplace_back(vector<vector<Examen>>(2)); // añadir día nuevo con 2 turnos
-        cout << "total dias " << turnos.size() << endl;
     }else{
         throw runtime_error("Error: se ha alcanzado el número máximo de días permitidos.");
     }
@@ -34,33 +33,27 @@ bool Horario::sePuedeAgregar(int dia, int turno, const Examen& e) const{
     const auto& turnoActual = turnos[dia][turno];
 
     for(const auto&examen : turnoActual){
-        cout << "verificando si se puede agregar el examen " << endl;
         // si el turno actual tiene un examen del mismo curso y grado que el que se quiere agregar
         if(examen.obtCarrera() == e.obtCarrera() && examen.obtCurso() == e.obtCurso()){
-            cout << "ya hay un examen del mismo curso y grado" << endl;
             return false; // incumple restricción
         }
         for(const auto& restriccion : restricciones){
             // si el examen que se quiere añadir tiene alguna restricción con el examen actual
             if((restriccion.first == examen.obtCodigo() && restriccion.second == e.obtCodigo()) ||
             (restriccion.second == examen.obtCodigo() && restriccion.first == e.obtCodigo())){
-                cout << "se incumple una restriccion de asignaturas" << endl;
                 return false;
             }
         }
     }
-    cout << "se pudo colocar el examen" << endl;
     return true;
 }
 
 void Horario::agregarExamen(int dia, int turno, const Examen& e){
-    cout << "agregar examen" << endl;
     if(dia >= turnos.size()) agregarDia(); // agregar días dinámicamente si es necesario
     turnos[dia][turno].push_back(e);
 }
 
 void Horario::quitarExamen(int dia, int turno, const Examen& e){
-    cout << "quitar examen" << endl;
     if(dia >= turnos.size()) return;
     auto& turnoActual =  turnos[dia][turno];
     turnoActual.erase(remove(turnoActual.begin(), turnoActual.end(), e), turnoActual.end());
@@ -69,7 +62,6 @@ void Horario::quitarExamen(int dia, int turno, const Examen& e){
 void Horario::mostrarHorario() const{
     int nTurnos = 0, nDias = 0;
     for(size_t dia = 0; dia < turnos.size(); ++dia){
-
         nDias++;
         for(size_t turno=0; turno < turnos[dia].size(); ++turno){
             cout << "Turno " << turno+1 << endl;
