@@ -81,6 +81,16 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aulasR, i
  */
 void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Horario& horario);
 
+template <typename Func>
+double medirTiempo(Func funcion){
+    using namespace std::chrono;
+    auto inicio = high_resolution_clock::now();
+    funcion();
+    auto fin = high_resolution_clock::now();
+    duration<double> tiempo = fin - inicio;
+    return tiempo.count(); // devolver tiempo en segundos
+}
+
 
 int main(int argn, char ** argv){
     try{
@@ -266,13 +276,18 @@ void programa(int argn, char** argv){
         throw invalid_argument("Error: algoritmo desconocido.");
     }
 
+    // solucionar y medir duración
+    double tiempo = medirTiempo([&](){
+        if(!solucionador->solucionar()){
+            cout << "No se ha encontrado una solución para la configuración indicada." << endl;
+        }
+    });
     // si hay solución
-    if(solucionador->solucionar()){
-        cout << "Horario calculado con éxito:" << endl;
+    if(horario.obtHorarios().size()>0){
         horario.mostrarHorario();
     }
-    // si no hay solución
-    else{ cout << "No se pudo calcular un horario válido" << endl; }
+
+    cout << "Tiempo: " << tiempo << " segundos" << endl;
 
     delete solucionador; // limpiar memoria
 }

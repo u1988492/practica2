@@ -13,7 +13,7 @@
 	<iostream>
 	<iomanip>
 
-1736614657 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.cpp
+1736618126 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.cpp
 	"AlgoritmoVoraz.h"
 	"Examen.h"
 	"Horario.h"
@@ -51,7 +51,7 @@
 1736598224 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.h
 	"Solucionador.h"
 
-1736615576 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.cpp
+1736618730 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.cpp
 	"Horario.h"
 
 1736526768 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionador.cpp
@@ -62,7 +62,7 @@
 	"Examen.h"
 	"Horario.h"
 
-1736615443 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
+1736619233 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
 	<iostream>
 	<vector>
 	<string>
@@ -71,6 +71,7 @@
 	<fstream>
 	<stdexcept>
 	<set>
+	<chrono>
 	"Examen.h"
 	"Horario.h"
 	"Solucionador.h"

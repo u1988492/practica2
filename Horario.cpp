@@ -79,7 +79,6 @@ void Horario::mostrarHorario() const{
     cout << "Num. turnos: " << nTurnos << endl;
     cout << "Num. dias: " << nDias << endl;
     cout << "Desviación: " << desviacion << endl;
-    cout << "Tiempo: " << endl;
 }
 
 void Horario::agregarRestriccion(const string& codi1, const string& codi2){

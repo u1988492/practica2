@@ -5,5 +5,5 @@
 using namespace std;
 
 bool BacktrackingMejorOpcion::solucionar(){
-    return true;
+    return false;
 }
