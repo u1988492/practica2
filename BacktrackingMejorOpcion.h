@@ -8,7 +8,7 @@ class Horario;
 class BacktrackingMejorOpcion : public SolucionadorBacktracking
 {
     public:
-        BacktrackingMejorOpcion(const vector<Examen>& examenes, const Horario& horario)
+        BacktrackingMejorOpcion(const vector<Examen>& examenes, Horario& horario)
         : SolucionadorBacktracking(examenes, horario), mejorHorario(horario), mejorDesviacion(-1) {}
 
         bool solucionar() override;

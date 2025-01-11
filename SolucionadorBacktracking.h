@@ -9,7 +9,7 @@ class SolucionadorBacktracking: public Solucionador
 {
     public:
 
-        SolucionadorBacktracking(const vector<Examen>&examenes, const Horario&horario)
+        SolucionadorBacktracking(const vector<Examen>&examenes, Horario&horario)
         : Solucionador(examenes, horario) {}
 
         // implementacion de la funcion de solucionar

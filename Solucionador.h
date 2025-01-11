@@ -2,6 +2,11 @@
 #define SOLUCIONADOR_H
 
 #include <vector>
+#include <map>
+#include <algorithm>
+#include <string>
+#include <iostream>
+#include <iomanip>
 #include "Examen.h"
 #include "Horario.h"
 
@@ -13,8 +18,10 @@ class Solucionador
 {
     public:
         // constructor
-        Solucionador(const vector<Examen>& examenes, const Horario& horario)
+        Solucionador(const vector<Examen>& examenes, Horario& horario)
         : examenes(examenes), horario(horario) {}
+
+        virtual ~Solucionador() = default;
 
         // metodo virtual que se implementa en las clases derivadas del solucionador
         virtual bool solucionar() = 0;
@@ -26,7 +33,7 @@ class Solucionador
         // lista de examenes que organizar
         vector<Examen> examenes;
         // horario sobre el que se trabaja
-        Horario horario;
+        Horario& horario;
 };
 
 #endif // SOLUCIONADOR_H

@@ -46,7 +46,8 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
         }
 
         campos = tokens(linea, '\t', true); // comprobar si hay que ponerlo como true o false porque en la anterior practica tuvo que ser true
-
+        /**BORRAR**/
+        cout << "leyendo linea " << linea << endl;
         if(!restricciones){
             // leer datos de asignaturas
             if(campos.size()>=7){ // solo procesar lineas que tengan los campos necesarios
@@ -84,8 +85,8 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aulasR, i
             string arg = argv[i];
             // mostrar menú de opciones
             if(arg == "-h" || arg == "--help"){
-                cout << "Uso: ./" << argv[0] << " [-h] | [-v] [-m] [-cr <int>] [-gc <int>] [-s <int> [-d <int>] fichero" << endl;
-                const int width = 10;
+                cout << "Uso: " << argv[0] << " [-h] | [-v] [-m] [-cr <int>] [-gc <int>] [-s <int> [-d <int>] fichero" << endl;
+                const int width = 15;
                 cout << "Opciones disponibles: " << endl;
                 cout << left << setw(width) << "-h, --help"  << "muestra este mensaje de ayuda y sale del programa" << endl;
                 cout << left << setw(width) << "-v" << "búsqueda rápida con un algoritmo voraz" << endl;
@@ -106,19 +107,40 @@ void procesarArgumentos(int argn, char** argv, string& algoritmo, int& aulasR, i
                 cout << "Usando algoritmo mejor opcion" << endl;
             }
             else if(arg =="-cr" && i+1<argn){
-                aulasR = stoi(argv[i+1]); //leer numero de aulas de capacidad reducida
+                cout << "procesando -cr: " << argv[i+1] << endl;
+                string par = string(argv[++i]);
+                if (!all_of(par.begin(), par.end(), ::isdigit)) {
+                    throw invalid_argument("Error: El valor de -cr debe ser un entero válido.");
+                }
+                aulasR = stoi(par); //leer numero de aulas de capacidad reducida
             }
             else if(arg =="-gc" && i+1<argn){
-                aulasG = stoi(argv[i+1]); // leer numero de aulas de gran capacidad
+                cout << "procesando -gc: " << argv[i+1] << endl;
+                string par = string(argv[++i]);
+                if (!all_of(par.begin(), par.end(), ::isdigit)) {
+                    throw invalid_argument("Error: El valor de -gc debe ser un entero válido.");
+                }
+                aulasG = stoi(par); // leer numero de aulas de gran capacidad
             }
             else if(arg == "-s" && i+1<argn){
-                semestre = stoi(argv[i+1]); // leer semestre
-                if(semestre!=1 || semestre!=2){
+                string par = string(argv[++i]);
+                if (!all_of(par.begin(), par.end(), ::isdigit)) {
+                    throw invalid_argument("Error: El valor de -cr debe ser un entero válido.");
+                }
+
+                semestre = stoi(par); // leer semestre
+
+                if(semestre!=1 && semestre!=2){
                     throw invalid_argument("Error: el valor asociado a la opción '-s' es incorrecto.");
                 }
             }
             else if(arg == "-d" && i+1<argn){
-                maxDias = stoi(argv[i+1]); // ler maximo de dias que se pueden ocupar
+                cout << "procesando -d: " << argv[i+1] << endl;
+                string par = string(argv[++i]);
+                if (!all_of(par.begin(), par.end(), ::isdigit)) {
+                    throw invalid_argument("Error: El valor de -d debe ser un entero válido.");
+                }
+                maxDias = stoi(par); // ler maximo de dias que se pueden ocupar
             }
             else if(fichero.empty()){
                 fichero = arg; // se asume que si no hay ninguna opcion en la entrada, la entrada es el archivo de lectura
@@ -143,12 +165,14 @@ int main(int argn, char ** argv){
         int aulasG = 1;
         int maxDias = -1; // maxDias indefinidos
         int semestre = 1;
-        string fichero = "assignatures_poques.txt";
+        string fichero;
 
         vector<Examen> examenes; // candidatos
-        Horario horario(maxDias, aulasG, aulasR); // inicializar por defecto: max dias, gc, cr
 
         procesarArgumentos(argn, argv, algoritmo, aulasR, aulasG, maxDias, semestre, fichero);
+
+        Horario horario(maxDias, aulasG, aulasR); // añadir restricciones a horario
+
         procesarArchivoEntrada(fichero, examenes, horario); // guardar info de examenes y restricciones del archivo de entrada
 
         // guardar carreras diferentes de los examenes leidos para obtener el total
