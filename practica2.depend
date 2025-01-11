@@ -44,7 +44,7 @@
 1736526035 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.h
 	"Solucionador.h"
 
-1736528735 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.cpp
+1736533674 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.cpp
 	"Horario.h"
 
 1736526768 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionador.cpp
@@ -55,7 +55,7 @@
 	"Examen.h"
 	"Horario.h"
 
-1736533232 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
+1736594465 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
 	<iostream>
 	<vector>
 	<string>

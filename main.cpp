@@ -45,11 +45,11 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
             continue;
         }
 
-        campos = tokens(linea, '\t', false); // comprobar si hay que ponerlo como true o false porque en la anterior practica tuvo que ser true
+        campos = tokens(linea, '\t', true); // comprobar si hay que ponerlo como true o false porque en la anterior practica tuvo que ser true
 
         if(!restricciones){
             // leer datos de asignaturas
-            if(campos.size()>=8){ // solo procesar lineas que tengan los campos necesarios
+            if(campos.size()>=7){ // solo procesar lineas que tengan los campos necesarios
                 // procesar los campos de interes
                 string grado = campos[0];
                 string codi = campos[2];
@@ -143,15 +143,15 @@ int main(int argn, char ** argv){
         int aulasG = 1;
         int maxDias = -1; // maxDias indefinidos
         int semestre = 1;
-        string fichero;
+        string fichero = "assignatures_poques.txt";
 
-        vector<Examen> examenes;
-        Horario horario(maxDias, aulasG, aulasR); // inicializar por defecto: max dias, gc, cr ARREGLAR SEGUN ENUNCIADO
+        vector<Examen> examenes; // candidatos
+        Horario horario(maxDias, aulasG, aulasR); // inicializar por defecto: max dias, gc, cr
 
         procesarArgumentos(argn, argv, algoritmo, aulasR, aulasG, maxDias, semestre, fichero);
-        procesarArchivoEntrada(fichero, examenes, horario);
+        procesarArchivoEntrada(fichero, examenes, horario); // guardar info de examenes y restricciones del archivo de entrada
 
-        //contar carreras diferentes en los examenes leidos
+        // guardar carreras diferentes de los examenes leidos para obtener el total
         set<string> carreras;
         for(const auto&examen: examenes){
             carreras.insert(examen.obtCarrera());
@@ -175,10 +175,12 @@ int main(int argn, char ** argv){
             throw invalid_argument("Error: algoritmo desconocido.");
         }
 
+        // si hay solución
         if(solucionador->solucionar()){
             cout << "Horario calculado con éxito:" << endl;
             horario.mostrarHorario();
         }
+        // si no hay solución
         else{ cout << "No se pudo calcular un horario válido" << endl; }
 
         delete solucionador; // limpiar memoria
