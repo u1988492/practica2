@@ -8,7 +8,8 @@ class Examen;
 class AlgoritmoVoraz : public Solucionador{
     public:
         // constructor con examenes(candidatos) y solucion(horario)
-        AlgoritmoVoraz(const vector<Examen>& examenes, Horario&horario);
+        AlgoritmoVoraz(const vector<Examen>& examenes, Horario&horario): Solucionador(examenes, horario){}
+
         // destructor por defecto
         ~AlgoritmoVoraz() override = default;
         // implementación del metodo de resolver

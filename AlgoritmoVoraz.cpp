@@ -5,10 +5,6 @@
 
 using namespace std;
 
-AlgoritmoVoraz::AlgoritmoVoraz(const vector<Examen>&examenes, Horario& horario) : Solucionador(examenes, horario){
-    ordenarExamenes();
-}
-
 void AlgoritmoVoraz::ordenarExamenes(){
     // ordenar examenes para facilitar el cálculo del horario
     sort(examenes.begin(), examenes.end(), [](const Examen&a, const Examen&b){
@@ -23,6 +19,8 @@ void AlgoritmoVoraz::ordenarExamenes(){
 }
 
 bool AlgoritmoVoraz::solucionar(){
+    // ordenar candidatos para procesarlos más fácilmente
+    ordenarExamenes();
     // guardar el último día guardado para cada carrera y curso
     map<pair<string, int>, int> ultimoDia;
     // para cada examen de los candidatos, intentar colocar en el horario

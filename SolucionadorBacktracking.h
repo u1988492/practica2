@@ -12,12 +12,14 @@ class SolucionadorBacktracking: public Solucionador
         SolucionadorBacktracking(const vector<Examen>&examenes, Horario&horario)
         : Solucionador(examenes, horario) {}
 
-        // implementacion de la funcion de solucionar
+        // función para implementar recursividad
         bool solucionar() override;
 
     private:
         // funcion recursiva
         bool backtracking(int indiceExamen);
+        // función para ordenar exámenes para facilitar los cálculos
+        void ordenarExamenes();
 };
 
 #endif // SOLUCIONADORBACKTRACKING_H

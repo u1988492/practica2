@@ -108,8 +108,8 @@ int main(int argn, char ** argv){
 
 // IMPLEMENTACIÓN
 // Función para comprobar que los datos leídos son válidos
-bool validarDatos(const string& grado, const string& codi, int semestre, int curso){
-    return !grado.empty() && !codi.empty() && (semestre == 1 || semestre == 2) && curso > 0;
+bool validarDatos(const string& grado, const string& codi, int semestre, int curso, int semestreHorario){
+    return !grado.empty() && !codi.empty() && semestre == semestreHorario && curso > 0;
 }
 
 // FUNCION PARA LEER LOS DATOS DEL ARCHIVO DE ENTRADA
@@ -145,7 +145,7 @@ void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Hor
                 int curso = stoi(campos[6]);
                 bool granCapacidad = (campos[3]== "g");
 
-                if(validarDatos(grado, codi, semestre, curso)){
+                if(validarDatos(grado, codi, semestre, curso, horario.obtSemestre())){
                     // si los datos son válidos, guardar a estructura de datos de examenes que organizar
                     // actualizar contadores de datos
                     Examen e(codi, grado, curso, semestre, granCapacidad);
@@ -249,7 +249,7 @@ void programa(int argn, char** argv){
 
     procesarArgumentos(argn, argv, algoritmo, aulasR, aulasG, maxDias, semestre, fichero);
 
-    Horario horario(maxDias, aulasG, aulasR); // añadir restricciones a horario
+    Horario horario(maxDias, aulasG, aulasR, semestre); // añadir restricciones a horario
 
     procesarArchivoEntrada(fichero, examenes, horario); // guardar info de examenes y restricciones del archivo de entrada
 

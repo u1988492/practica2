@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <string>
 #include <iomanip>
+#include <map>
 #include "Examen.h"
 
 using namespace std;
@@ -17,13 +18,15 @@ class Horario
 {
     public:
         // constructor de horario con dias maximos que ocupar, numero de aulas grandes, y numero de aulas pequeñas
-        Horario(int maxDias, int aulasG, int aulasR);
+        Horario(int maxDias, int aulasG, int aulasR, int semestre);
         // funcion para obtener el numero maximo de dias que ocupar
         int obtMaxDias();
         //funcion para obtener el numero de aulas grandes disponibles
         int obtAulasG();
         // funcion para obtener el numero de aulas de capacidad reducida disponibles
         int obtAulasR();
+        // función para obtener el semestre para el cual se quiere calcular el horario
+        int obtSemestre();
         // funcion para obtener los horarios de examenes
         const vector<vector<vector<Examen>>>& obtHorarios() const;
 
@@ -54,6 +57,8 @@ class Horario
         int aulasG;
         // cantidad de aulas de capacidad reducida
         int aulasR;
+        // semestre para el cual se quieren organizar los exámenes
+        int semestre;
 
 };
 
