@@ -112,9 +112,7 @@ bool validarDatos(const string& grado, const string& codi, int semestre, int cur
     return !grado.empty() && !codi.empty() && semestre == semestreHorario && curso > 0;
 }
 
-// FUNCION PARA LEER LOS DATOS DEL ARCHIVO DE ENTRADA
-// Pre:
-// Post:
+// Función para leer los datos del archivo de entrada
 void procesarArchivoEntrada(const string& fichero, vector<Examen>& examenes, Horario& horario){
     ifstream fin(fichero);
     if(!fin.is_open()){

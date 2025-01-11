@@ -23,11 +23,14 @@ bool BacktrackingMejorOpcion::backtrackingMejorOpcion(int indiceExamen){
 
     // intentar colocar el examen actual en cada posición posible
     const Examen& examen = examenes[indiceExamen];
+    bool solEncontrada = false;
+
     for(int dia = 0; horario.obtMaxDias() == -1 || dia < horario.obtMaxDias(); dia++){
         // añadir día nuevo dinámicamente si es necesario y posible
         if(horario.obtMaxDias() == -1 && dia >= horario.obtMaxDias()){
             horario.agregarDia();
         }
+        else{break;} // alcanzado maximo de días
 
         for(int turno = 0; turno < 2; turno++){
             // comprobar restricciones de asignaturas
@@ -46,16 +49,17 @@ bool BacktrackingMejorOpcion::backtrackingMejorOpcion(int indiceExamen){
             // colocar el examen
             horario.agregarExamen(dia, turno, examen);
 
-            backtrackingMejorOpcion(indiceExamen);
+            // intentar colocar el siguiente examen
+            bool resultado = backtrackingMejorOpcion(indiceExamen+1);
+            solEncontrada = solEncontrada ||resultado;
 
             // quitar el examen para probar la siguiente posibilidad
             horario.quitarExamen(dia, turno, examen);
         }
         // dejar de probar días si se ha llegado al máximo establecido
-        if(horario.obtMaxDias() != -1 && dia >= horario.obtHorarios().size()) break;
+        //if(horario.obtMaxDias() != -1 && dia >= horario.obtHorarios().size()) break;
     }
-    // seguir buscando soluciones
-    return true;
+    return solEncontrada;
 }
 
 double BacktrackingMejorOpcion::evaluarHorario(const Horario& horario){

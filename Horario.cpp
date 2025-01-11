@@ -130,27 +130,4 @@ double Horario::calcularDesviacion() const{
 
     // calcular desviación estándar media de todas las carreras y cursos
     return nCarrerasCursos > 0 ? sumaDesviaciones / nCarrerasCursos : 0.0;
-
-   /* for(const auto&dia : turnos){ // dia: <vector<vector<vector<Examen>>>
-        int cont = 0;
-        for(const auto&turno : dia){ // turno: <vector<vector<Examen>>
-            cont += turno.size(); //  total de turnos en cada dia
-        }
-        examenesPorDia.push_back(cont);
-    }
-
-    double media = 0.0;
-    for(int cont : examenesPorDia){
-        media += cont;
-    }
-    media /= examenesPorDia.size();
-
-    double variacion = 0.0;
-    for(int cont : examenesPorDia){
-        variacion += (cont-media) * (cont-media);
-    }
-
-    variacion /= examenesPorDia.size();
-
-    return sqrt(variacion);*/
 }
