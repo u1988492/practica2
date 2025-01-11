@@ -5,6 +5,8 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <string>
+#include <iomanip>
 #include "Examen.h"
 
 using namespace std;

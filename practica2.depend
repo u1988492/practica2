@@ -9,11 +9,11 @@
 1736533398 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.cpp
 	"Examen.h"
 
-1736533729 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.h
+1736611065 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\examen.h
 	<iostream>
 	<iomanip>
 
-1736598207 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.cpp
+1736614657 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\algoritmovoraz.cpp
 	"AlgoritmoVoraz.h"
 	"Examen.h"
 	"Horario.h"
@@ -31,11 +31,13 @@
 	"Examen.h"
 	"Horario.h"
 
-1736533672 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.h
+1736615523 c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\horario.h
 	<vector>
 	<string>
 	<cmath>
 	<algorithm>
+	<string>
+	<iomanip>
 	"Examen.h"
 
 1736528674 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\backtrackingmejoropcion.cpp
@@ -55,12 +57,12 @@
 1736526768 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionador.cpp
 	"Solucionador.h"
 
-1736528667 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.cpp
+1736610842 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\solucionadorbacktracking.cpp
 	"SolucionadorBacktracking.h"
 	"Examen.h"
 	"Horario.h"
 
-1736594465 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
+1736615443 source:c:\users\claud\desktop\cosas de la uni\tercero_gddv\eda\practica2\main.cpp
 	<iostream>
 	<vector>
 	<string>

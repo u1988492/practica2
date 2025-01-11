@@ -10,6 +10,7 @@ AlgoritmoVoraz::AlgoritmoVoraz(const vector<Examen>&examenes, Horario& horario) 
 
 void AlgoritmoVoraz::ordenarExamenes(){
     // ordenar examenes para facilitar el cálculo del horario
+    cout << "ordenando examenes" << endl;
     sort(examenes.begin(), examenes.end(), [](const Examen&a, const Examen&b){
         if(a.esGrupoGrande() != b.esGrupoGrande()){
                 return a.esGrupoGrande() > b.esGrupoGrande(); // priorizar examenes de aulas grandes
@@ -24,15 +25,20 @@ void AlgoritmoVoraz::ordenarExamenes(){
 bool AlgoritmoVoraz::solucionar(){
     // guardar el último día guardado para cada carrera y curso
     map<pair<string, int>, int> ultimoDia;
-
+    cout << "solucionando" << endl;
     // para cada examen de los candidatos, intentar colocar en el horario
     for(const auto& examen : examenes){
+        cout << "examen: " << examen.obtCodigo() << endl;
         bool asignado = false;
         int mejorDia = -1, mejorTurno = -1, maxDistancia = -1;
         // añadir examenes hasta llegar al maximo de días disponibles; si no hay límite, seguir iterando hasta colocar todos los exámenes
         for(int dia=0; horario.obtMaxDias() == -1 || dia < horario.obtMaxDias(); dia++){
             if(dia >= horario.obtHorarios().size()){
                 if(horario.obtMaxDias()==-1){
+                    // límite de seguridad para evitar consumir demsiada memoria
+                    if(dia>1000){
+                        throw runtime_error("Error: se alcanzó el límite de días del horario.");
+                    }
                     horario.agregarDia(); // añadir días dinámicamente si no hay límite
                 }
                 else{ break; } // salir del bucle si se ha alcanzado el máximo
@@ -61,6 +67,7 @@ bool AlgoritmoVoraz::solucionar(){
                     mejorDia = dia;
                     mejorTurno = turno;
                 }
+
             }
         }
         // colocar examen en la mejor posición disponible

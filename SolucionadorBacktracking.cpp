@@ -5,7 +5,7 @@
 using namespace std;
 
 bool SolucionadorBacktracking::solucionar(){
-    return true;
+    return false;
 }
 
 bool SolucionadorBacktracking::backtracking(int indiceExamen){

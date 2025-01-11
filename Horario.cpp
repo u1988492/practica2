@@ -2,7 +2,8 @@
 
 using namespace std;
 
-Horario::Horario(int maxDias, int aulasG, int aulasR): maxDias(maxDias), aulasG(aulasG), aulasR(aulasR){
+Horario::Horario(int maxDias, int aulasG, int aulasR)
+    : maxDias(maxDias), aulasG(aulasG), aulasR(aulasR){
 
     if(maxDias>0){
         turnos.resize(maxDias, vector<vector<Examen>>(2)); // reservar días con 2 turnos
@@ -20,29 +21,35 @@ const vector<vector<vector<Examen>>>& Horario::obtHorarios() const{ return turno
 void Horario::agregarDia(){
     if(maxDias == -1 || turnos.size() < maxDias){
         turnos.emplace_back(vector<vector<Examen>>(2)); // añadir día nuevo con 2 turnos
+        cout << "total dias " << turnos.size() << endl;
     }else{
         throw runtime_error("Error: se ha alcanzado el número máximo de días permitidos.");
     }
 }
 
 bool Horario::sePuedeAgregar(int dia, int turno, const Examen& e) const{
+
     if(dia >= turnos.size()) return false;
 
     const auto& turnoActual = turnos[dia][turno];
 
     for(const auto&examen : turnoActual){
+        cout << "verificando si se puede agregar el examen " << endl;
         // si el turno actual tiene un examen del mismo curso y grado que el que se quiere agregar
         if(examen.obtCarrera() == e.obtCarrera() && examen.obtCurso() == e.obtCurso()){
+            cout << "ya hay un examen del mismo curso y grado" << endl;
             return false; // incumple restricción
         }
         for(const auto& restriccion : restricciones){
             // si el examen que se quiere añadir tiene alguna restricción con el examen actual
             if((restriccion.first == examen.obtCodigo() && restriccion.second == e.obtCodigo()) ||
             (restriccion.second == examen.obtCodigo() && restriccion.first == e.obtCodigo())){
+                cout << "se incumple una restriccion de asignaturas" << endl;
                 return false;
             }
         }
     }
+    cout << "se pudo colocar el examen" << endl;
     return true;
 }
 
@@ -60,20 +67,30 @@ void Horario::quitarExamen(int dia, int turno, const Examen& e){
 }
 
 void Horario::mostrarHorario() const{
+    int nTurnos = 0, nDias = 0;
     for(size_t dia = 0; dia < turnos.size(); ++dia){
-        cout << " Dia " << dia + 1 << endl;
+
+        nDias++;
         for(size_t turno=0; turno < turnos[dia].size(); ++turno){
-            cout << "Turno " << (turno == 0 ? "Mañana" : "Tarde") << endl;
+            cout << "Turno " << turno+1 << endl;
+            nTurnos++;
+
             for(const auto& examen : turnos[dia][turno]){
-                cout << "   " << examen.obtCodigo() << " (" << (examen.esGrupoGrande() ? "g" : "r") << "), "
-                << examen.obtCarrera() << " - " << examen.obtCarrera() << "º curso" << endl;
+                cout << "* " << examen.obtCodigo() << " (tipo " << (examen.esGrupoGrande() ? "g" : "r") << "), "
+                << examen.obtCarrera() << "-" << examen.obtCurso() << " *" << endl;
             }
         }
     }
+
+    double desviacion = calcularDesviacion(); //ESPECIFICAR PRECISION
+
+    cout << "Num. turnos: " << nTurnos << endl;
+    cout << "Num. dias: " << nDias << endl;
+    cout << "Desviación: " << desviacion << endl;
+    cout << "Tiempo: " << endl;
 }
 
 void Horario::agregarRestriccion(const string& codi1, const string& codi2){
-    cout << "agregar restriccion" << endl;
     restricciones.emplace_back(codi1, codi2);
 }
 
